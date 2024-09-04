@@ -1,0 +1,52 @@
+\documentclass{KCESCOE}
+\usepackage{makeidx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{subfigure}
+\usepackage{verbatim}
+\usepackage{ragged2e}
+\usepackage{%
+  babel,
+  algorithmic,
+  algorithm,
+  caption
+}
+\usepackage{url}
+\usepackage[breaklinks=true]{hyperref}
+
+%********************Seminar Name , Author, Seat No (Change Details Here)****************
+\title{CLASSIFICATION AND GRADING OF WHEAT GRANULES USING SVM AND NAIVE BAYES CLASSIFIER}
+\authorone{Student Name abc\\ Student Name abc \\ Student Name abc \\ Student Name abc}
+
+%\seatnoone{B80764273}
+\guide{Prof. A.Y. Surywanshi}
+\hod{Prof. M. T. Kolhe}
+\principal{Dr. S. R. Sughandhi}
+
+
+\submitdate{JUNE 2022}
+\ackhisorher{his}   %Use his or her   Change made here will change acknowledment
+\ackhimorher{him} 	%Use him or her		Change made here will change acknowledment
+%***********************************************************************************
+\begin{document}
+\dispalytitlepage
+
+%To Change Abstract open Report/Preface/abstract.tex
+%To Change Abbrevations open Report/Preface/abbrevations.tex
+%**************Chapters**********
+\chapterformatting
+{
+\input{./chapters/chapter1-introduction}
+\input{./chapters/chapter2-literature_survey}
+\input{./chapters/chapter3-Requirement_analysis}
+\input{./chapters/chapter4-System_analysis}
+\input{./chapters/chapter5-System_design}
+\input{./chapters/chapter6-result_discussion}
+\input{./chapters/chapter7-conclusion}
+\input{./chapters/chapter8-references}
+\input{./chapters/chapter9-Appendix}
+}
+%*************End of Chapters*******
+
+
+\end{document} 

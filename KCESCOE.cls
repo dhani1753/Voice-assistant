@@ -1,0 +1,172 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{KCESCOE}[2015/03/06 v1.0 KCESCOE Project Report Template Prepared ]
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
+\ProcessOptions
+\LoadClass[12pt,a4paper]{report}
+
+
+%**********************PACKAGES*******************************
+\RequirePackage{amssymb}
+%\RequirePackage{graphics}
+\RequirePackage{graphicx}
+\RequirePackage{fancyhdr}
+%\RequirePackage{eucal}
+\RequirePackage[USenglish]{babel}
+%\RequirePackage[usenames, dvipsnames]{color}
+%\RequirePackage[perpage]{footmisc}
+%\RequirePackage[square, sort, numbers, authoryear]{natbib}
+%\RequirePackage{ifthen}
+\usepackage{color}
+\graphicspath{ {figures/} }
+\usepackage{array}
+\usepackage[font=bf,labelsep=space]{caption}
+\usepackage{enumitem}
+\usepackage{paralist}
+\usepackage{fancybox}
+%**********************PACKAGES END*******************************
+
+%**************************Page Margin***************************************
+\hoffset=0pt							%LEFT MARGIN 1INCH+0pt
+\voffset = -0.5cm					%TOP MARGIN 1INCH-0.5cm
+\textheight = 24.43cm			%TEXT HEIGHT
+\textwidth = 15.93cm			%TEXT WIDTH
+\oddsidemargin = 0.46cm		
+\topmargin = 0pt
+\headsep = 0.5cm
+
+%**************************Page Margin End***************************************
+
+%****************************Common Formatting***********************
+
+\rmfamily															%%Font Type
+\linespread{1.5}           						%%Line Spacing
+\setlength{\parindent}{2em}						%%Paragraph Indent
+%\setlength{\parskip}{1em}						%%Line Spacing Between two paragraph
+\brokenpenalty=10000
+\let\itemize\compactitem
+  \let\enditemize\endcompactitem
+  \let\enumerate\compactenum
+  \let\endenumerate\endcompactenum
+  \let\description\compactdesc
+  \let\enddescription\endcompactdesc
+  \pltopsep=0pt
+  \plitemsep=0pt
+  \plparsep=0pt
+
+%**************************FONT FORMATTING**********************
+\usepackage{titlesec}
+
+\titleformat{\chapter}[display]
+{\centering\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{-10pt}{\Huge}
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{12pt}{}
+\titleformat{\subsection}
+{\normalfont\large\bfseries}{\thesubsection}{12pt}{}
+\titleformat{\subsubsection}
+{\normalfont\normalsize\bfseries}{\thesubsubsection}{12pt}{}
+\titleformat{\paragraph}[runin]
+{\normalfont\normalsize}{\theparagraph}{12pt}{}
+\titleformat{\subparagraph}[runin]
+{\normalfont\normalsize}{\thesubparagraph}{12pt}{}
+\titlespacing*{\chapter} {0pt}{-46pt}{6pt}
+\titlespacing*{\section} {0pt}{-6pt}{6pt}
+\titlespacing*{\subsection} {0pt}{0pt}{6pt}
+\titlespacing*{\subsubsection}{0pt}{0pt}{6pt}
+\titlespacing*{\paragraph}{\parindent}{0pt}{0pt}
+\titlespacing*{\subparagraph}{\parindent}{0pt}{0pt}
+
+%**************************FONT FORMATTING END**********************
+%***************************Common Formatting End*************************
+
+%***************************TITLE PAGE*************************
+\input{./preface/title}
+\input{./preface/certificate}
+\input{./preface/declaration}
+\input{./preface/acknowledgement}
+\input{./preface/abstract}
+\input{./preface/table}
+\input{./preface/figure}
+\input{./preface/tables}
+\input{./preface/abbreviations}
+%***************************TITLE PAGE END*************************
+
+%PREFACE SECTION FORMATING  START
+\def\dispalytitlepage{
+\titlep
+    \pagenumbering{roman}
+    \pagestyle{plain}
+		\certificatepage
+         \newpage
+        \declartionpage
+		\acknowledgementpage
+        \abstractpage
+		\tablepage
+		\figurepage
+		\tablespage
+	\abbreviationspage
+		\newpage
+}	
+
+\def\prefacesection#1{%
+  \chapter*{#1}
+  \addcontentsline{toc}{chapter}{#1}
+}
+%PREFACE SECTION FORMATING END
+
+
+%************** Print Name in acknowledgement***********
+\def\projectnameack{\textbf{\@title}}
+\def\guidename{\textbf{\@guide}}
+\def\hodname{\textbf{\@hod}}
+\def\principalnameack{\textbf{\@principal}}
+\def\ackhisorherprint{\@ackhisorher}
+\def\ackhimorherprint{\@ackhimorher}
+
+\def\acknowledgeauthor{
+\begin{flushright}
+{\@authorone}\\
+{Exam No.: \@seatnoone}
+\end{flushright}
+}
+
+\def\certificatename{\textbf{{\@authorone}\\}}
+\def\projectname{{\textbf{\Large\uppercase\expandafter{\@title}}}}
+\def\printyear{February 2023}
+
+\def\printguide{\@guide}
+\def\printhod{\@hod}
+\def\printprincipal{\@principal}
+%************** Print Name in acknowledgement end**********
+
+
+%************** Formatting for Chapter Start*****************
+\def\chapterformatting{
+	\setlength{\parindent}{2em}						
+	\pagenumbering{arabic}
+	\pagestyle{fancy}
+	\fancyhf{}  %keep left side black
+	\renewcommand{\headrulewidth}{1pt}  %keep seprator between header and text
+	\renewcommand{\footrulewidth}{1pt}	%keep seprator between footer and text 0 means no seprator
+	\fancyhead[R]{\slshape \leftmark}
+	
+		\fancyfoot[R]{\thepage}
+	%\fancyfoot[LO,RE]{\thepage}
+	
+	\fancyfoot[L]{KCES'{\small s} C{\small o}EM, JALGAON}
+}
+%************** Formatting for Chapter End*****************
+
+
+%************************REFERENCE FORMATING************
+\def\thebibliography#1{\chapter*{References\@mkboth
+	 {References}{References}}
+		\addcontentsline{toc}{chapter}{References}%\bf
+	 \list
+	 {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
+	 \advance\leftmargin\labelsep
+	 \usecounter{enumi}}
+	 \def\newblock{\hskip .11em plus .33em minus .07em}
+	 \sloppy\clubpenalty4000\widowpenalty4000
+ \sfcode`\.=1000\relax}
+\let\endthebibliography=\endlist
+%************************REFERENCE FORMATING************
